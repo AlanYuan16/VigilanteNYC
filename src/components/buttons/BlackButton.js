@@ -6,8 +6,7 @@ import { TouchableOpacity, Text, StyleSheet } from "react-native";
 const BlackButton = ({ onPress, title }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.BlackButton}>
-      <Text style={styles.BlackButtonText}>{title}
-      Enter</Text>
+      <Text style={styles.BlackButtonText}>{title}Enter</Text>
     </TouchableOpacity>
   );
 }

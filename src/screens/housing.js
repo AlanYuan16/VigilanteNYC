@@ -7,6 +7,7 @@ export default function PlaceholderScreen() {
       <Text style={styles.text}>Housing</Text>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({

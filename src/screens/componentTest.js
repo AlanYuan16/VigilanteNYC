@@ -1,16 +1,16 @@
-//This screen is for testing purposes only and will get scrapped once the app is fully functional
-
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native'; // Ensure StyleSheet is imported
 import BlackButton from '../components/buttons/BlackButton.js';
 
-export default function PlaceholderScreen() {
+function PlaceholderScreen() {
   return (
     <View style={styles.container}>
       <BlackButton />
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -25,3 +25,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+
+
+
+export default PlaceholderScreen;
