@@ -1,3 +1,5 @@
+//This screen is for testing purposes only and will get scrapped once the app is fully functional
+
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import BlackButton from '../components/buttons/BlackButton.js';
