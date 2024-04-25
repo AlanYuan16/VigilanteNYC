@@ -1,10 +1,20 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 export default function PlaceholderScreen() {
+  const [zipcode, setZipcode] = useState('');
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Schooling</Text>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Zipcode"
+          onChangeText={setZipcode}
+          value={zipcode}
+          keyboardType="numeric"
+        />
+      </View>
     </View>
   );
 }
@@ -12,13 +22,21 @@ export default function PlaceholderScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  text: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  
+  searchContainer: {
+    position: 'absolute',
+    top: 100, // Adjust this value as needed
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    width: 200,
   },
 });
