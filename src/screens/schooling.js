@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import data from '../api/Schoolingv2.json';
 
 export default function PlaceholderScreen() {
   const [zipcode, setZipcode] = useState('');
   const [filteredSchools, setFilteredSchools] = useState([]);
-
+  const [selectedSchool, setSelectedSchool] = useState(null);
 
   // Filters the schools, uses the hook to update the filtered schools when the zipcode changes
   useEffect(() => {
@@ -18,7 +18,30 @@ export default function PlaceholderScreen() {
   }, [zipcode]);
 
 
-  //top is the title, the rest is the list of schools
+  //changes the color of the graduation rate based on the value
+  const renderGraduationRate = (graduationRate) => {
+    let color;
+    if (graduationRate >= 90) {
+      color = 'green';
+    } else if (graduationRate >= 80) {
+      color = '#B3D23E';      
+    } else if (graduationRate >= 70) {
+      color = 'orange';
+    } else {
+      color = 'red';
+    }
+    return (
+      <Text style={{ color }}>{graduationRate}%</Text>
+    );
+  };
+
+
+  // Toggles the description of the school for later dropdown
+  const toggleDescription = (school) => {
+    setSelectedSchool(selectedSchool === school ? null : school);
+  };
+
+  // Renders the screen
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search High School by Zipcode</Text>
@@ -35,11 +58,15 @@ export default function PlaceholderScreen() {
         <FlatList
           data={filteredSchools}
           renderItem={({ item }) => (
-            <View style={styles.schoolContainer}>
-              <Text style={styles.schoolName}>{item.school_name}</Text>
-              <Text>{item.description}</Text>
-              <Text>Graduation Rate: {item.graduation_rate}</Text>
-            </View>
+            <TouchableOpacity onPress={() => toggleDescription(item)}>
+              <View style={styles.schoolContainer}>
+                <Text style={styles.schoolName}>{item.school_name}</Text>
+                {renderGraduationRate(item.graduation_rate)}
+                {selectedSchool === item && (
+                  <Text style={styles.description}>{item.description}</Text>
+                )}
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={item => item.school_name}
         />
@@ -49,7 +76,6 @@ export default function PlaceholderScreen() {
     </View>
   );
 }
-
 
 // Styles
 const styles = StyleSheet.create({
@@ -81,5 +107,9 @@ const styles = StyleSheet.create({
   schoolName: {
     fontWeight: 'bold',
     marginBottom: 5,
+  },
+  description: {
+    marginTop: 10,
+    marginLeft: 10,
   },
 });
