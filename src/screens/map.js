@@ -1,10 +1,51 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import MapView, { PROVIDER_GOOGLE} from 'react-native-maps';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 
 export default function PlaceholderScreen() {
+  const mapRef = useRef();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={focusMap}>
+          <View style={{padding: 10}}>
+            <Text>Focus</Text>
+          </View>
+        </TouchableOpacity>
+      )
+    })
+  })
+  const focusMap = () =>{
+    const park = {
+      latitude: 40.7826,
+      longitude: -73.9656,
+      latitudeDelta: 0.09,
+      longitudeDelta: 0.04,
+    };
+
+    mapRef.current.animateToRegion(park);
+  }
+
+  const nycBoundaries = {
+    northEast: { latitude: 40.92, longitude: -74.27 },
+    southWest: { latitude: 40.49, longitude: -73.68}
+  };
+  
+  useEffect(() => {
+    if(mapRef.current){
+      mapRef.current.setMapBoundaries(
+        nycBoundaries.northEast,
+        nycBoundaries.southWest
+      );
+    }
+  });
+
   return (
     <View style={mapFormat.container}>
       <MapView 
@@ -17,6 +58,7 @@ export default function PlaceholderScreen() {
         latitudeDelta: 0.09,
         longitudeDelta: 0.04,
       }}
+      ref={mapRef}
       />
   
     </View>
