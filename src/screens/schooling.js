@@ -7,7 +7,7 @@ export default function PlaceholderScreen() {
   const [filteredSchools, setFilteredSchools] = useState([]);
   const [selectedSchool, setSelectedSchool] = useState(null);
 
-  // Filters the schools, uses the hook to update the filtered schools when the zipcode changes
+  // Filters the schools, uses the hook to update the filtered schools when the zipcode changes by the user
   useEffect(() => {
     if (zipcode) {
       const schoolsInZip = data.filter(school => school.zip === parseInt(zipcode));
