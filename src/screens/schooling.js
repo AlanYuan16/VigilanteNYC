@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList } from 'react-native';
-import data from '../api/Schooling.json';
+import data from '../api/Schoolingv2.json';
 
 export default function PlaceholderScreen() {
   const [zipcode, setZipcode] = useState('');
   const [filteredSchools, setFilteredSchools] = useState([]);
 
+
+  // Filters the schools, uses the hook to update the filtered schools when the zipcode changes
   useEffect(() => {
     if (zipcode) {
       const schoolsInZip = data.filter(school => school.zip === parseInt(zipcode));
@@ -15,6 +17,8 @@ export default function PlaceholderScreen() {
     }
   }, [zipcode]);
 
+
+  //top is the title, the rest is the list of schools
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search High School by Zipcode</Text>
@@ -46,6 +50,8 @@ export default function PlaceholderScreen() {
   );
 }
 
+
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
