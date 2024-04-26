@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { View, Alert, StyleSheet } from 'react-native';
 import * as Location from 'expo-location';
@@ -19,6 +19,7 @@ const  initial_Region ={
 
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
+  const mapRef = useRef();
 
   useEffect(() => {
     (async () => {
@@ -51,6 +52,20 @@ export default function PlaceholderScreen() {
     );
   };
 
+  const nycBoundaries = {
+    northEast: { latitude: 40.92, longitude: -74.27 },
+    southWest: { latitude: 40.49, longitude: -73.68}
+  };
+  
+  useEffect(() => {
+    if(mapRef.current){
+      mapRef.current.setMapBoundaries(
+        nycBoundaries.northEast,
+        nycBoundaries.southWest
+      );
+    }
+  });
+  
   return (
     <View style={styles.container}>
       <MapView
@@ -60,6 +75,7 @@ export default function PlaceholderScreen() {
         showsUserLocation={true}
         showsMyLocationButton={true}
         customMapStyle={mapStyle}
+        ref={mapRef}
       />
     </View>
   );
