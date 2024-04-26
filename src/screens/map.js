@@ -1,8 +1,8 @@
 import React, {useRef, useEffect} from 'react';
-import MapView, { PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import data from '../api/crime.json'
 
 
 
@@ -59,7 +59,14 @@ export default function PlaceholderScreen() {
         longitudeDelta: 0.04,
       }}
       ref={mapRef}
-      />
+      showsUserLocation
+      showsMyLocationButton
+      >
+      <Marker coordinate = {{latitude: 40.689, longitude: -73.945}}
+      pinColor = {"purple"}
+      title={"title"}
+      description={"description"}/>
+      </MapView>
   
     </View>
   );
@@ -93,7 +100,7 @@ const mapFormat = StyleSheet.create({
 mapStyle= 
 [
   {
-    "elementType": "labels",
+    "elementType": "labels.text.fill",
     "stylers": [
       {
         "visibility": "off"
