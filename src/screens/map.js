@@ -37,7 +37,7 @@ export default function PlaceholderScreen() {
     if (userLocation && !isInNYC(userLocation)) {
       Alert.alert(
         'Map Alert',
-        'This map is only for New York City (NYC). Please use it within NYC boundaries.',
+        'This map is only for New York City (NYC)! Please use it within NYC boundaries.',
       );
     }
   }, [userLocation]);
@@ -75,12 +75,23 @@ const styles = StyleSheet.create({
 });
 
 const mapStyle = [
-  {
-    elementType: 'labels',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
+  [
+    {
+      "featureType": "poi.business",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    }
+  ]
 ];
