@@ -9,6 +9,7 @@ const EmojiFeedbackPage = () => {
   const [lastSelectedEmoji, setLastSelectedEmoji] = useState('');
   const [counters, setCounters] = useState({ '😍': 0, '😊': 0, '😐': 0, '😔': 0, '😡': 0 });
   const [showEmojis, setShowEmojis] = useState(false);
+  const [lastZipCode, setLastZipCode] = useState('');
 
   const handleZipCodeChange = (text) => {
     setZipCode(text);
@@ -18,6 +19,10 @@ const EmojiFeedbackPage = () => {
     if (zipCode === '') {
       Alert.alert('Error', 'Please enter a zip code');
     } else {
+      if (zipCode !== lastZipCode) {
+        setCounters({ '😍': 0, '😊': 0, '😐': 0, '😔': 0, '😡': 0 });
+        setLastZipCode(zipCode);
+      }
       setShowEmojis(true);
     }
   };
@@ -130,4 +135,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EmojiFeedbackPage;
+export default EmojiFeedbackPage
