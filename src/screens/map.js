@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { View, Alert, StyleSheet } from 'react-native';
 import * as Location from 'expo-location';
-import schoolMarkers from './schoolMarkers.json';
+import MapView from "react-native-map-clustering"
+
+import markers from './markers.json';
+
 const NYC_BOUNDARY = {
   latitude: 40.7128,
   longitude: -74.0060,
@@ -75,10 +78,10 @@ export default function PlaceholderScreen() {
         showsUserLocation={true}
         showsMyLocationButton={true}
         customMapStyle={mapStyle}
-        ref={mapRef}>
-        
-        {schoolMarkers.map((schoolMarkers, index) => (
-          <Marker key={index} coordinate={{laititude: schoolMarkers.Laititude, longitude: schoolMarkers.Longitude}}/>
+        ref={mapRef}
+    >
+        {markers.map((markers, index) =>(
+          <Marker key={index} coordinate={{latitude: markers.Latitude, longitude: markers.Longitude}}/>
         ))}
         
       </MapView>
