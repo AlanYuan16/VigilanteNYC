@@ -1,0 +1,41 @@
+[
+    {
+      "NUM_ID": 283747810,
+      "BORO_NM": "BROOKLYN",
+      "CMPLNT_FR_DT": "3/14/2024",
+      "CMPLNT_FR_TM": "12:45:00",
+      "JURIS_DESC": "N.Y. POLICE DEPT",
+      "LAW_CAT_CD": "MISDEMEANOR",
+      "OFNS_DESC": "POSSESSION OF STOLEN PROPERTY",
+      "PD_DESC": "STOLEN PROPERTY 3,POSSESSION",
+      "RPT_DT": "3/14/2024",
+      "Latitude": 40.611819,
+      "Longitude": -73.999526
+    },
+    {
+        "NUM_ID": 283255859,
+        "BORO_NM": "STATEN ISLAND",
+        "CMPLNT_FR_DT": "3/5/2024",
+        "CMPLNT_FR_TM": "22:10:00",
+        "JURIS_DESC": "N.Y. POLICE DEPT",
+        "LAW_CAT_CD": "FELONY",
+        "OFNS_DESC": "FELONY ASSAULT",
+        "PD_DESC": "STRANGULATION 1ST",
+        "RPT_DT": "3/5/2024",
+        "Latitude": 40.615055,
+        "Longitude": -74.074829
+      },
+      {
+        "NUM_ID": 283815338,
+        "BORO_NM": "BROOKLYN",
+        "CMPLNT_FR_DT": "3/15/2024",
+        "CMPLNT_FR_TM": "19:55:00",
+        "JURIS_DESC": "N.Y. POLICE DEPT",
+        "LAW_CAT_CD": "MISDEMEANOR",
+        "OFNS_DESC": "DANGEROUS WEAPONS",
+        "PD_DESC": "WEAPONS, POSSESSION, ETC",
+        "RPT_DT": "3/15/2024",
+        "Latitude": 40.689444,
+        "Longitude": -73.987228
+      }
+]

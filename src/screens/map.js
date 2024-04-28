@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { View, Alert, StyleSheet } from 'react-native';
+import { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
+import { View, Alert, StyleSheet, Text } from 'react-native';
 import * as Location from 'expo-location';
 import MapView from "react-native-map-clustering"
+// import Supercluster from 'supercluster';
 
 import markers from './markers.json';
+import markers2 from './markers2.json';
+import testM from './testM.json';
+
+
 
 const NYC_BOUNDARY = {
   latitude: 40.7128,
@@ -15,8 +20,8 @@ const NYC_BOUNDARY = {
 const  initial_Region ={
   latitude: 40.769, 
   longitude: -73.982, 
-  latitudeDelta: 0.09,
-  longitudeDelta: 0.04,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
 
 }
 
@@ -69,8 +74,12 @@ export default function PlaceholderScreen() {
     }
   });
   
+  const onMarkerSelected = () =>{
+    Alert.alert(testM.PD_DESC);
+  }
   return (
     <View style={styles.container}>
+      
       <MapView
         style={styles.map}
         provider={PROVIDER_GOOGLE}
@@ -79,10 +88,37 @@ export default function PlaceholderScreen() {
         showsMyLocationButton={true}
         customMapStyle={mapStyle}
         ref={mapRef}
+        clusterColor='#F3BDB1'   
+        radius={40}
+        extent={200}
+        tracksViewChanges={false}
+        clusteringEnabled={true}
+        
     >
-        {markers.map((markers, index) =>(
-          <Marker key={index} coordinate={{latitude: markers.Latitude, longitude: markers.Longitude}}/>
+        {/* {markers.map((markers, index) =>(
+          <Marker key={index} coordinate={{latitude: markers.Latitude, longitude: markers.Longitude}} opacity={0.7}/>
+        ))} */}
+
+        {/* {markers2.map((markers2, index) =>(
+          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}/>
+        ))} */}
+      
+        {markers2.map((markers2, index) =>(
+          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}>
+            {/* <Text>{testM.LAW_CAT_CD}</Text> */}
+            <Callout>
+              <View style={{ padding: 10}}>
+                <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
+                  {markers2.OFNS_DESC}
+                </Text>
+                <Text style={{ fontSize: 10 ,textAlign: 'center'}}>
+                  {markers2.CMPLNT_FR_DT}
+                </Text>
+              </View>
+            </Callout>
+          </Marker>
         ))}
+                
         
       </MapView>
       
