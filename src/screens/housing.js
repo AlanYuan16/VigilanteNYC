@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Button, Platform } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-const ZillowScreen = () => {
+const ZillowEmbed = () => {
+
+  // 
   const [zipcode, setZipcode] = useState('');
   const [url, setUrl] = useState('');
   const [showSearch, setShowSearch] = useState(true);
@@ -73,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ZillowScreen;
+export default ZillowEmbed;
