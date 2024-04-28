@@ -1,0 +1,419 @@
+[
+
+        {
+          "name": "Barretto Point Park",
+          "latitude": 40.8093,
+          "longitude": -73.8887
+        },
+        {
+          "name": "Bronx Park",
+          "latitude": 40.8628,
+          "longitude": -73.8716
+        },
+        {
+          "name": "Claremont Park",
+          "latitude": 40.8362,
+          "longitude": -73.9124
+        } ,
+        {
+            "name": "Adam Yauch Park",
+            "latitude": 40.6788,
+            "longitude": -73.9911
+          },
+          {
+            "name": "Brooklyn Bridge Park",
+            "latitude": 40.7021,
+            "longitude": -73.9948
+          },
+          {
+            "name": "Bush Terminal Park",
+            "latitude": 40.6494,
+            "longitude": -74.0120
+          },{
+            "name": "Bowling Green",
+            "latitude": 40.7043,
+            "longitude": -74.0134
+          },
+          {
+            "name": "Bryant Park",
+            "latitude": 40.7536,
+            "longitude": -73.9832
+          },
+          {
+            "name": "Central Park",
+            "latitude": 40.7851,
+            "longitude": -73.9683
+          },{
+            "name": "Alley Pond Park",
+            "latitude": 40.7486,
+            "longitude": -73.7374
+          },
+          {
+            "name": "Arverne East Nature Preserve",
+            "latitude": 40.5881,
+            "longitude": -73.7902
+          },
+          {
+            "name": "Astoria Park",
+            "latitude": 40.7780,
+            "longitude": -73.9219
+          },{
+            "name": "Alice Austen Park",
+            "latitude": 40.6241,
+            "longitude": -74.0638
+          },
+          {
+            "name": "Blue Heron Park",
+            "latitude": 40.5394,
+            "longitude": -74.1701
+          },
+          {
+            "name": "Brookfield Park",
+            "latitude": 40.5842,
+            "longitude": -74.1313
+          },
+          {
+            "name": "Barretto Point Park",
+            "latitude": 40.8064,
+            "longitude": -73.8883,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Bronx Park",
+            "latitude": 40.8601,
+            "longitude": -73.8794,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Claremont Park",
+            "latitude": 40.8432,
+            "longitude": -73.9061,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Concrete Plant Park",
+            "latitude": 40.8244,
+            "longitude": -73.884,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Crotona Park",
+            "latitude": 40.8392,
+            "longitude": -73.8925,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Ferry Point Park",
+            "latitude": 40.8014,
+            "longitude": -73.8633,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Franz Sigel Park",
+            "latitude": 40.8139,
+            "longitude": -73.9264,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Garrison Park",
+            "latitude": 40.8334,
+            "longitude": -73.8825,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Hart Island",
+            "latitude": 40.8508,
+            "longitude": -73.7764,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Joyce Kilmer Park",
+            "latitude": 40.8335,
+            "longitude": -73.9195,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Macombs Dam Park",
+            "latitude": 40.8311,
+            "longitude": -73.9319,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Mill Pond Park",
+            "latitude": 40.8223,
+            "longitude": -73.9266,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Pelham Bay Park",
+            "latitude": 40.8717,
+            "longitude": -73.8107,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Rev. T. Wendell Foster Park And Recreation Center",
+            "latitude": 40.8238,
+            "longitude": -73.9073,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Soundview Park",
+            "latitude": 40.8092,
+            "longitude": -73.8684,
+            "borough": "Bronx"
+          },
+          {
+            "name": "St. James Park",
+            "latitude": 40.8492,
+            "longitude": -73.9097,
+            "borough": "Bronx"
+          },
+          {
+            "name": "St. Mary's Park",
+            "latitude": 40.8129,
+            "longitude": -73.9101,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Van Cortlandt Park",
+            "latitude": 40.8894,
+            "longitude": -73.8986,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Watson Houses Playground",
+            "latitude": 40.8327,
+            "longitude": -73.9314,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Williamsbridge Oval",
+            "latitude": 40.8762,
+            "longitude": -73.8596,
+            "borough": "Bronx"
+          },
+          {
+            "name": "Adam Yauch Park",
+            "latitude": 40.7178,
+            "longitude": -73.9906,
+            "borough": "Brooklyn"
+          },
+          {
+            "name": "Brooklyn Bridge Park",
+            "latitude": 40.7031,
+            "longitude": -73.9958,
+            "borough": "Brooklyn"
+          },
+          {
+            "name": "Bush Terminal Park",
+            "latitude": 40.6458,
+            "longitude": -74.0205,
+            "borough": "Brooklyn"
+          },
+          {
+            "name": "Canarsie Park",
+            "latitude": 40.6458,
+            "longitude": -73.8825,
+            "borough": "Brooklyn"
+          },
+          {
+            "name": "Commodore Barry Park",
+            "latitude": 40.6966,
+            "longitude": -73.9732,
+            "borough": "Brooklyn"
+          },
+            {
+              "name": "Barretto Point Park",
+              "latitude": 40.8064,
+              "longitude": -73.8883,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Bronx Park",
+              "latitude": 40.8601,
+              "longitude": -73.8794,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Claremont Park",
+              "latitude": 40.8432,
+              "longitude": -73.9061,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Concrete Plant Park",
+              "latitude": 40.8244,
+              "longitude": -73.884,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Crotona Park",
+              "latitude": 40.8392,
+              "longitude": -73.8925,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Ferry Point Park",
+              "latitude": 40.8014,
+              "longitude": -73.8633,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Franz Sigel Park",
+              "latitude": 40.8139,
+              "longitude": -73.9264,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Garrison Park",
+              "latitude": 40.8334,
+              "longitude": -73.8825,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Hart Island",
+              "latitude": 40.8508,
+              "longitude": -73.7764,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Joyce Kilmer Park",
+              "latitude": 40.8335,
+              "longitude": -73.9195,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Macombs Dam Park",
+              "latitude": 40.8311,
+              "longitude": -73.9319,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Mill Pond Park",
+              "latitude": 40.8223,
+              "longitude": -73.9266,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Pelham Bay Park",
+              "latitude": 40.8717,
+              "longitude": -73.8107,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Rev. T. Wendell Foster Park And Recreation Center",
+              "latitude": 40.8238,
+              "longitude": -73.9073,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Soundview Park",
+              "latitude": 40.8092,
+              "longitude": -73.8684,
+              "borough": "Bronx"
+            },
+            {
+              "name": "St. James Park",
+              "latitude": 40.8492,
+              "longitude": -73.9097,
+              "borough": "Bronx"
+            },
+            {
+              "name": "St. Mary's Park",
+              "latitude": 40.8129,
+              "longitude": -73.9101,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Van Cortlandt Park",
+              "latitude": 40.8894,
+              "longitude": -73.8986,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Watson Houses Playground",
+              "latitude": 40.8327,
+              "longitude": -73.9314,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Williamsbridge Oval",
+              "latitude": 40.8762,
+              "longitude": -73.8596,
+              "borough": "Bronx"
+            },
+            {
+              "name": "Adam Yauch Park",
+              "latitude": 40.7178,
+              "longitude": -73.9906,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Brooklyn Bridge Park",
+              "latitude": 40.7031,
+              "longitude": -73.9958,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Bush Terminal Park",
+              "latitude": 40.6458,
+              "longitude": -74.0205,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Canarsie Park",
+              "latitude": 40.6458,
+              "longitude": -73.8825,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Commodore Barry Park",
+              "latitude": 40.6966,
+              "longitude": -73.9732,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Coney Island Beach & Boardwalk",
+              "latitude": 40.5749,
+              "longitude": -73.985,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Flatbush African Burial Ground",
+              "latitude": 40.6557,
+              "longitude": -73.9537,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Fort Greene Park",
+              "latitude": 40.691,
+              "longitude": -73.9735,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Greenpoint Public Park",
+              "latitude": 40.7245,
+              "longitude": -73.9511,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Herbert Von King Park",
+              "latitude": 40.6923,
+              "longitude": -73.9464,
+              "borough": "Brooklyn"
+            },
+            {
+              "name": "Kaiser Park",
+              "latitude": 40.5783,
+              "longitude": -73.9924,
+              "borough": "Brooklyn"
+            },
+            {
+                "name": "Prospect Park",
+                "latitude": 40.6602,
+                "longitude": -73.9681,
+                "borough": "Brooklyn"
+            }
+          
+      
+]

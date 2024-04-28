@@ -12,55 +12,39 @@ import SchoolIcon from '../assets/school-building-12427.png';
 import HousingIcon from '../assets/bungalow-1881.png';
 import ReviewIcon from '../assets/discord-8249.png';
 
-// Creating the bottom navigation bar object
+
+
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabNavigation() {
-    return (
-        // Creating the three tabs with the functions of our application
-        <Tab.Navigator
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                    let iconSource;
+const CustomBottomTabNavigator = () => {
+  return (
+    <Tab.Navigator
+    screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+            let iconSource;
 
-                    if (route.name === 'Map') {
-                        iconSource = focused ? MapIcon : MapIcon;
-                    } else if (route.name === 'Schooling') {
-                        iconSource = focused ? SchoolIcon : SchoolIcon;
-                    } else if (route.name === 'Housing') {
-                        iconSource = focused ? HousingIcon : HousingIcon;
-                    } else if (route.name === 'Review') {
-                        iconSource = focused ? ReviewIcon : ReviewIcon;
-                    }
+            if (route.name === 'Map') {
+                iconSource = focused ? MapIcon : MapIcon;
+            } else if (route.name === 'Schooling') {
+                iconSource = focused ? SchoolIcon : SchoolIcon;
+            } else if (route.name === 'Housing') {
+                iconSource = focused ? HousingIcon : HousingIcon;
+            } else if (route.name === 'Review') {
+                iconSource = focused ? ReviewIcon : ReviewIcon;
+            }
 
-                    // Return an Image component with the appropriate icon source
-                    return <Image source={iconSource} style={{ width: size, height: size }} />;
-                },
-            })}
-        >
-            <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Schooling" component={SchoolingScreen} />
-            <Tab.Screen name="Housing" component={HousingScreen} />
-            <Tab.Screen name="Review" component={EmojiFeedbackPage} />
-        </Tab.Navigator>
-    );
-}
+            // Return an Image component with the appropriate icon source
+            return <Image source={iconSource} style={{ width: size, height: size }} />;
+        },
+    })}
+>
+    <Tab.Screen name="Map" component={MapScreen} />
+    <Tab.Screen name="Schooling" component={SchoolingScreen} />
+    <Tab.Screen name="Housing" component={HousingScreen} />
+    <Tab.Screen name="Review" component={EmojiFeedbackPage} />
+</Tab.Navigator>
+  );
+};
 
+export default CustomBottomTabNavigator;
 
-
-//creating the bottom navigation bar object
-/*const Tab = createBottomTabNavigator();
-
-export default function BottomTabNavigation() {
-    return ( 
-
-        //creating the three tabs with the functions of our application
-        <Tab.Navigator>
-            <Tab.Screen name= "Map" component = {MapScreen} />
-            <Tab.Screen name="Schooling" component = {SchoolingScreen}/>
-            <Tab.Screen name="Housing" component = {HousingScreen}/>
-            <Tab.Screen name="User Review" component = {EmojiFeedback}/>
-        </Tab.Navigator>
-    );
-}
-*/
