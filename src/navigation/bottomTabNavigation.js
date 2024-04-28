@@ -5,12 +5,14 @@ import MapScreen from '../screens/map.js';
 import SchoolingScreen from '../screens/schooling.js';
 import HousingScreen from '../screens/housing.js';
 import EmojiFeedbackPage from '../screens/EmojiFeedback.js';
+import CrimeMap from '../screens/crime.js';
 
 // Image imports
 import MapIcon from '../assets/location-map-2956.png';
 import SchoolIcon from '../assets/school-building-12427.png';
 import HousingIcon from '../assets/bungalow-1881.png';
 import ReviewIcon from '../assets/discord-8249.png';
+import CrimeIcon from '../assets/theif_mask_crime_icon_191227.png';
 
 
 
@@ -23,7 +25,9 @@ const CustomBottomTabNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => {
             let iconSource;
 
-            if (route.name === 'Map') {
+            if (route.name === 'Crime') {
+                iconSource = focused ? CrimeIcon : CrimeIcon;
+            } else if (route.name === 'Map') {
                 iconSource = focused ? MapIcon : MapIcon;
             } else if (route.name === 'Schooling') {
                 iconSource = focused ? SchoolIcon : SchoolIcon;
@@ -37,7 +41,8 @@ const CustomBottomTabNavigator = () => {
             return <Image source={iconSource} style={{ width: size, height: size }} />;
         },
     })}
->
+>   
+    <Tab.Screen name="Crime" component={CrimeMap} options={{headerShown: false}}/>
     <Tab.Screen name="Map" component={MapScreen} />
     <Tab.Screen name="Schooling" component={SchoolingScreen} />
     <Tab.Screen name="Housing" component={HousingScreen} />
