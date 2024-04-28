@@ -3,23 +3,19 @@ import { View, StyleSheet, TextInput, Button, Platform } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 const ZillowEmbed = () => {
-
-  // 
   const [zipcode, setZipcode] = useState('');
   const [url, setUrl] = useState('');
   const [showSearch, setShowSearch] = useState(true);
 
-  // Handle ZIP code input
   const handleZipcodeChange = (text) => {
     setZipcode(text);
   };
 
-
-  // Handle submit button
   const handleSubmit = () => {
-    setUrl(`https://www.zillow.com/new-york-ny-${zipcode}`);
-    // Hide search input
-    setShowSearch(false);
+    if (zipcode) {
+      setUrl(`https://www.zillow.com/new-york-ny-${zipcode}`);
+      setShowSearch(false);
+    }
   };
 
   return (
@@ -36,11 +32,13 @@ const ZillowEmbed = () => {
           <Button title="Submit" onPress={handleSubmit} />
         </View>
       )}
-      <WebView
-        source={{ uri: url }}
-        style={{ flex: 1 }}
-        onLoad={() => setShowSearch(false)}
-      />
+      {url ? (
+        <WebView
+          source={{ uri: url }}
+          style={{ flex: 1 }}
+          onLoad={() => setShowSearch(false)}
+        />
+      ) : null}
     </View>
   );
 };
