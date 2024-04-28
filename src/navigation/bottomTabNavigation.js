@@ -37,10 +37,6 @@ export default function BottomTabNavigation() {
                     return <Image source={iconSource} style={{ width: size, height: size }} />;
                 },
             })}
-            tabBarOptions={{
-                activeTintColor: 'tomato',
-                inactiveTintColor: 'gray',
-            }}
         >
             <Tab.Screen name="Map" component={MapScreen} />
             <Tab.Screen name="Schooling" component={SchoolingScreen} />
