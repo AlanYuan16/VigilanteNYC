@@ -1,18 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { View, Alert, StyleSheet } from 'react-native';
+import { View, Alert, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
-import markers from './markers.json';
-
-
-
-
-// const markers = [
-//   { latitude:40.5937667,
-//     longitude: -73.9858806}, // New York City coordinates
-//   // Add more marker coordinates as needed
-// ];
+import parks from './parks.json';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 const NYC_BOUNDARY = {
   latitude: 40.7128,
@@ -20,16 +12,19 @@ const NYC_BOUNDARY = {
   latitudeDelta: 0.5,
   longitudeDelta: 0.5,
 };
-const  initial_Region ={
-  latitude: 40.769, 
-  longitude: -73.982, 
+
+const initial_Region = {
+  latitude: 40.769,
+  longitude: -73.982,
   latitudeDelta: 0.09,
   longitudeDelta: 0.04,
-
-}
+};
 
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
+  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(true); // State to track visibility of school markers
+  const [visibleParkMarkers, setVisibleParkMarkers] = useState(true); // State to track visibility of park markers
+  const [dropdownVisible, setDropdownVisible] = useState(false); // State to track visibility of dropdown
   const mapRef = useRef();
 
   useEffect(() => {
@@ -49,7 +44,7 @@ export default function PlaceholderScreen() {
     if (userLocation && !isInNYC(userLocation)) {
       Alert.alert(
         'Map Alert',
-        'This map is only for New York City (NYC)! Please use it within NYC boundaries.',
+        'This map is only for New York City (NYC)! Please use it within NYC boundaries.'
       );
     }
   }, [userLocation]);
@@ -65,18 +60,34 @@ export default function PlaceholderScreen() {
 
   const nycBoundaries = {
     northEast: { latitude: 40.92, longitude: -74.27 },
-    southWest: { latitude: 40.49, longitude: -73.68}
+    southWest: { latitude: 40.49, longitude: -73.68 },
   };
-  
+
   useEffect(() => {
-    if(mapRef.current){
+    if (mapRef.current) {
       mapRef.current.setMapBoundaries(
         nycBoundaries.northEast,
         nycBoundaries.southWest
       );
     }
   });
-  
+
+  const toggleSchoolMarkers = () => {
+    setVisibleSchoolMarkers((prevValue) => !prevValue);
+  };
+
+  const toggleParkMarkers = () => {
+    setVisibleParkMarkers((prevValue) => !prevValue);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible((prevValue) => !prevValue);
+  };
+
+  const handleMarkerPress = (markerName) => {
+    Alert.alert('Marker Info', `You clicked on ${markerName}`);
+  };
+
   return (
     <View style={styles.container}>
       <MapView
@@ -85,17 +96,46 @@ export default function PlaceholderScreen() {
         initialRegion={initial_Region}
         showsUserLocation={true}
         showsMyLocationButton={true}
-        customMapStyle={mapStyle}
         ref={mapRef}
-    >
-      {schoolMarkers.map((schoolMarkers, index) =>(//console.log(info)
-        <Marker key={index} coordinate={{latitude: schoolMarkers.Latitude, longitude: schoolMarkers.Longitude}}/>
-      ))}
-      {/* {markers.map((markers, index) =>(
-        <Marker key={index} coordinate={{latitude: markers.Latitude, longitude: markers.Longitude}}/>
-      ))} */}
-    </MapView>
-    
+      >
+        {visibleSchoolMarkers &&
+          schoolMarkers.map((schoolMarker, index) => (
+            <Marker
+              key={'school_' + index}
+              coordinate={{
+                latitude: schoolMarker.Latitude,
+                longitude: schoolMarker.Longitude,
+              }}
+              pinColor="blue"
+              onPress={() => handleMarkerPress(schoolMarker.school_name)} 
+            />
+          ))}
+        {visibleParkMarkers &&
+          parks.map((park, index) => (
+            <Marker
+              key={'park_' + index}
+              coordinate={{
+                latitude: park.latitude,
+                longitude: park.longitude,
+              }}
+              pinColor="green"
+              onPress={() => handleMarkerPress(park.name)}
+            />
+          ))}
+      </MapView>
+      <TouchableOpacity onPress={toggleDropdown} style={styles.toggleButton}>
+        <Text style={styles.toggleButtonText}>Toggle Markers</Text>
+      </TouchableOpacity>
+      {dropdownVisible && (
+        <View style={styles.dropdown}>
+          <TouchableOpacity onPress={toggleSchoolMarkers} style={styles.dropdownButton}>
+            <Text style={styles.dropdownButtonText}>School</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={toggleParkMarkers} style={styles.dropdownButton}>
+            <Text style={styles.dropdownButtonText}>Parks</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }
@@ -103,30 +143,37 @@ export default function PlaceholderScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
   },
   map: {
     flex: 1,
   },
+  toggleButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: 10,
+    borderRadius: 5,
+  },
+  toggleButtonText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+  dropdown: {
+    position: 'absolute',
+    top: 70,
+    right: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderRadius: 5,
+  },
+  dropdownButton: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: 10,
+    borderRadius: 5,
+  },
+  dropdownButtonText: {
+    color: 'white',
+    textAlign: 'center',
+  },
 });
-
-const mapStyle = [
-  [
-    {
-      "featureType": "poi.business",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "labels.text",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    }
-  ]
-];
