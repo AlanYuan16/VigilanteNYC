@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import * as Progress from 'react-native-progress';
 
 const LoadingScreen = () => {
@@ -30,10 +30,10 @@ const LoadingScreen = () => {
       <View style={styles.progressContainer}>
         <Progress.Bar
           progress={progress}
-          width={200}
+          width={Dimensions.get('window').width * 0.4} // 80% of the window width
           color="white" 
           borderColor="black" 
-          marginTop={455}
+          marginTop={Dimensions.get('window').height * 0.57} // 5% of the window height
           style={styles.progressBar}
         />
       </View>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 70, // Adjust the marginTop as needed
+    marginTop: Dimensions.get('window').height * 0.1, // 10% of the window height
   },
   welcome: {
     color: 'white',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     position: 'absolute',
-    bottom: 200, 
+    bottom: Dimensions.get('window').height * 0.3, // 10% of the window height
     left: 0,
     right: 0,
   },
