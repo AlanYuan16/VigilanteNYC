@@ -15,10 +15,10 @@ export default function BottomTabNavigation() {
 
         //creating the three tabs with the functions of our application
         <Tab.Navigator>
-            <Tab.Screen name= "Map" component = {MapScreen} />
+            <Tab.Screen name= "Map" component = {MapScreen} options={{ headerShown: false }}/>
             <Tab.Screen name="Schooling" component = {SchoolingScreen}/>
             <Tab.Screen name="Housing" component = {HousingScreen}/>
-            <Tab.Screen name="Test" component = {Test}/>
+            <Tab.Screen name="Test" component = {Test} options={{ headerShown: false }}/>
         </Tab.Navigator>
     );
 }

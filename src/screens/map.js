@@ -3,7 +3,7 @@ import { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { View, Alert, StyleSheet, Text } from 'react-native';
 import * as Location from 'expo-location';
 import MapView from "react-native-map-clustering"
-// import Supercluster from 'supercluster';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import markers from './markers.json';
 import markers2 from './markers2.json';
@@ -22,7 +22,6 @@ const  initial_Region ={
   longitude: -73.982, 
   latitudeDelta: 0.0922,
   longitudeDelta: 0.0421,
-
 }
 
 export default function PlaceholderScreen() {
@@ -74,12 +73,43 @@ export default function PlaceholderScreen() {
     }
   });
   
-  const onMarkerSelected = () =>{
-    Alert.alert(testM.PD_DESC);
+  async function moveToLocation(latitude, longitude) {
+    mapRef.current.animateToRegion(
+      {
+        latitude,
+        longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      },
+      3000,
+    );   
   }
   return (
-    <View style={styles.container}>
-      
+    <View style={{ marginTop: 20, flex: 1}}>
+      <GooglePlacesAutocomplete
+        placeholder='Search'
+        fetchDetails={true}
+        GooglePlacesSearchQuery={{
+          rankby: "distance"
+        }}
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(JSON.stringify(details?.geometry?.location))
+          moveToLocation(details?.geometry?.location.lat, details?.geometry?.location.lng);
+        }}
+        query={{
+          key: 'AIzaSyDYey2cc5cl_2wfxC37QiFH7gQ4nL7-8zk',
+          language: 'en',
+          components: "country:us",
+          radius: 30000,
+        }}
+        onFail={error => console.log(error)}
+        styles={{
+          container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
+          listView: { backgroundColor: "white"}
+        }}
+      />
+
       <MapView
         style={styles.map}
         provider={PROVIDER_GOOGLE}
@@ -92,8 +122,7 @@ export default function PlaceholderScreen() {
         radius={40}
         extent={200}
         tracksViewChanges={false}
-        clusteringEnabled={true}
-        
+        mapPadding={{top:40, right:0, left:0, bottom:0}}
     >
         {/* {markers.map((markers, index) =>(
           <Marker key={index} coordinate={{latitude: markers.Latitude, longitude: markers.Longitude}} opacity={0.7}/>
@@ -102,17 +131,17 @@ export default function PlaceholderScreen() {
         {/* {markers2.map((markers2, index) =>(
           <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}/>
         ))} */}
-      
-        {markers2.map((markers2, index) =>(
-          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}>
+        
+        {testM.map((testM, index) =>(
+          <Marker key={index} coordinate={{latitude: testM.Latitude, longitude: testM.Longitude}} opacity={1}>
             {/* <Text>{testM.LAW_CAT_CD}</Text> */}
             <Callout>
               <View style={{ padding: 10}}>
                 <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
-                  {markers2.OFNS_DESC}
+                  {testM.OFNS_DESC}
                 </Text>
                 <Text style={{ fontSize: 10 ,textAlign: 'center'}}>
-                  {markers2.CMPLNT_FR_DT}
+                  {testM.CMPLNT_FR_DT}
                 </Text>
               </View>
             </Callout>
