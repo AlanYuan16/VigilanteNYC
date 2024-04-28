@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView ,{ PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { View, Alert, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
@@ -22,8 +22,8 @@ const initial_Region = {
 
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
-  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(true); // State to track visibility of school markers
-  const [visibleParkMarkers, setVisibleParkMarkers] = useState(true); // State to track visibility of park markers
+  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(false); // Initialize to false
+  const [visibleParkMarkers, setVisibleParkMarkers] = useState(false); // Initialize to false
   const [dropdownVisible, setDropdownVisible] = useState(false); // State to track visibility of dropdown
   const mapRef = useRef();
 
