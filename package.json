@@ -11,6 +11,7 @@
   "dependencies": {
     "@firebase/app": "^0.10.2",
     "@firebase/database": "^1.0.4",
+    "@firebase/firestore": "^4.6.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^19.2.2",
     "@react-native-firebase/database": "^19.2.2",

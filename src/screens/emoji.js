@@ -2,6 +2,27 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, StyleSheet, Alert } from 'react-native';
+import { initializeApp } from '@firebase/app';
+import { getDatabase } from '@firebase/database';
+import { ref, child, update } from '@firebase/database';
+
+
+
+//Firebase initialization
+const firebaseConfig = {
+  apiKey: "AIzaSyDF_w-f-b_ZKAxUbONooq9sj3DyeOXGbmg",
+  authDomain: "vigilantenyc-1c10f.firebaseapp.com",
+  databaseURL: "https://vigilantenyc-1c10f-default-rtdb.firebaseio.com",
+  projectId: "vigilantenyc-1c10f",
+  storageBucket: "vigilantenyc-1c10f.appspot.com",
+  messagingSenderId: "303549061074",
+  appId: "1:303549061074:web:44d50628c07e9de75cda0b",
+  measurementId: "G-C9YRENCTEP"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 
 const EmojiFeedbackPage = () => {
   const [zipCode, setZipCode] = useState('');
@@ -15,9 +36,11 @@ const EmojiFeedbackPage = () => {
     setZipCode(text);
   };
 
+  //function will handle the zip code submission
   const handleSubmitZipCode = () => {
+    //Fix exception handling later
     if (zipCode === '') {
-      Alert.alert('Error', 'Please enter a zip code');
+      Alert.alert('Invalid input', 'Please enter a zip code');
     } else {
       if (zipCode !== lastZipCode) {
         setCounters({ '😍': 0, '😊': 0, '😐': 0, '😔': 0, '😡': 0 });
@@ -27,28 +50,35 @@ const EmojiFeedbackPage = () => {
     }
   };
 
+
   const handleEmojiSelection = (emoji) => {
-    if (lastSelectedEmoji === emoji) {
-      setCounters((prevCounters) => ({ ...prevCounters, [emoji]: prevCounters[emoji] - 1 }));
-      setLastSelectedEmoji('');
-    } else {
-      setCounters((prevCounters) => {
-        const updatedCounters = { [emoji]: 1 };
-        Object.keys(prevCounters).forEach((key) => {
-          if (key !== emoji) {
-            updatedCounters[key] = 0;
-          }
-        });
-        return updatedCounters;
-      });
-      setLastSelectedEmoji(emoji);
+    // Check if the emoji has already been selected
+    if (selectedEmoji === emoji) {
+      return; // Exit the function if the emoji has already been selected
     }
+  
+    const emojiRef = child(ref(db), `emojis/${zipCode}/${emoji}`);
+    
+    // Update local state counters
+    setCounters((prevCounters) => ({
+      ...prevCounters,
+      [selectedEmoji]: (prevCounters[selectedEmoji] || 0) - 1, // Decrement previous emoji count
+      [emoji]: (prevCounters[emoji] || 0) + 1, // Increment selected emoji count
+    }));
+  
+    // Update count in the database
+    update(emojiRef, { count: counters[emoji] + 1 });
+  
+    // Set the selected emoji
     setSelectedEmoji(emoji);
   };
+  
+
+  
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.heading}>Enter Your Zip Code:</Text>
+      <Text style={styles.heading}>Enter Zip Code:</Text>
       <TextInput
         style={styles.input}
         placeholder="Zip Code"
