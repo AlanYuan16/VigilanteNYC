@@ -43,10 +43,10 @@ const CustomBottomTabNavigator = () => {
     })}
 >   
     <Tab.Screen name="Crime" component={CrimeMap} options={{headerShown: false}}/>
-    <Tab.Screen name="Map" component={MapScreen} />
-    <Tab.Screen name="Schooling" component={SchoolingScreen} />
-    <Tab.Screen name="Housing" component={HousingScreen} />
-    <Tab.Screen name="Review" component={EmojiFeedbackPage} />
+    <Tab.Screen name="Map" component={MapScreen} options={{headerShown: false}}/>
+    <Tab.Screen name="Schooling" component={SchoolingScreen} options={{headerShown: false}}/>
+    <Tab.Screen name="Housing" component={HousingScreen} options={{headerShown: false}}/>
+    <Tab.Screen name="Review" component={EmojiFeedbackPage} options={{headerShown: false}}/>
 </Tab.Navigator>
   );
 };

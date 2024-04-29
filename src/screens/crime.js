@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef, memo } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
-import { View, Alert, StyleSheet, Text } from 'react-native';
+import { View, Alert, StyleSheet, Text, SafeAreaView } from 'react-native';
 import * as Location from 'expo-location';
 import MapView from "react-native-map-clustering"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 
 import  markers2  from './markers2.json';
-
-
 
 
 const NYC_BOUNDARY = {
@@ -27,6 +25,7 @@ const  initial_Region ={
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
   const mapRef = useRef();
+  const memoizedMarkers = useMemo(() => markers2, []);
 
   useEffect(() => {
     (async () => {
@@ -74,18 +73,19 @@ export default function PlaceholderScreen() {
   });
   
   async function moveToLocation(latitude, longitude) {
-    mapRef.current.animateToRegion(
+    mapRef.current.animateCamera(
       {
         latitude,
         longitude,
         latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
+        longitudeDelta: 0.0421,
+        zoom: 20
       },
       100
     );   
   }
   return (
-    <View style={{ marginTop: 20, flex: 1}}>
+    <SafeAreaView style={{ marginTop: 20, flex: 1}}>
       <GooglePlacesAutocomplete
         placeholder='Search'
         fetchDetails={true}
@@ -103,6 +103,7 @@ export default function PlaceholderScreen() {
           components: "country:us",
           radius: 30000,
         }}
+        textInputProps={{ clearButtonMode: 'always' }}
         onFail={error => console.log(error)}
         styles={{
           container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
@@ -122,7 +123,7 @@ export default function PlaceholderScreen() {
         radius={40}
         extent={200}
         tracksViewChanges={false}
-        mapPadding={{top:50, right:0, left:0, bottom:0}}
+        mapPadding={{top:40, right:0, left:0, bottom:0}}
       
     >
         {/* {markers.map((markers, index) =>(
@@ -132,8 +133,7 @@ export default function PlaceholderScreen() {
         {/* {markers2.map((markers2, index) =>(
           <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}/>
         ))} */}
-        
-        {markers2.map((markers2, index) =>(
+        {memoizedMarkers.map((markers2, index) =>(
           <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}>
             {/* <Text>{testM.LAW_CAT_CD}</Text> */}
             <Callout>
@@ -148,11 +148,10 @@ export default function PlaceholderScreen() {
             </Callout>
           </Marker>
         ))}
-                
         
       </MapView>
       
-    </View>
+    </SafeAreaView>
   );
 }
 
