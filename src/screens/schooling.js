@@ -31,7 +31,7 @@ export default function PlaceholderScreen() {
       color = 'red';
     }
     return (
-      <Text style={{ color }}>{graduationRate}%</Text>
+      <Text style={{ color }}>Graduation Rate {graduationRate}%</Text>
     );
   };
 
@@ -81,7 +81,7 @@ export default function PlaceholderScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#000', // Dark background color
     paddingHorizontal: 20,
     paddingTop: 20,
   },
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginBottom: 20,
+    color: '#FFF', // White text color
   },
   searchContainer: {
     alignItems: 'center',
@@ -100,6 +101,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     width: '100%',
     marginBottom: 20,
+    borderRadius: 20, // Oval search bar
+    backgroundColor: '#FFF', // White background for search bar
   },
   schoolContainer: {
     marginBottom: 20,
@@ -107,9 +110,12 @@ const styles = StyleSheet.create({
   schoolName: {
     fontWeight: 'bold',
     marginBottom: 5,
+    color: '#FFF', // White text color for school name
   },
   description: {
     marginTop: 10,
     marginLeft: 10,
+    color: '#FFF', // White text color for description
   },
 });
+

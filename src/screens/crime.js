@@ -4,6 +4,8 @@ import { View, Alert, StyleSheet, Text } from 'react-native';
 import * as Location from 'expo-location';
 import MapView from "react-native-map-clustering"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { SafeAreaView } from 'react-native';
+
 
 
 import  markers2  from './markers2.json';

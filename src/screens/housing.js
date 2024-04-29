@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 40,
-    borderColor: 'gray',
+    paddingHorizontal: 10,
+    borderRadius: 20, // Oval-shaped input
     borderWidth: 1,
     marginRight: 10,
-    paddingHorizontal: 10,
   },
 });
 
