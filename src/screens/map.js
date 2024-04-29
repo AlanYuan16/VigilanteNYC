@@ -22,9 +22,9 @@ const initial_Region = {
 
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
-  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(false); // Initialize to false
-  const [visibleParkMarkers, setVisibleParkMarkers] = useState(false); // Initialize to false
-  const [dropdownVisible, setDropdownVisible] = useState(false); // State to track visibility of dropdown
+  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(false);
+  const [visibleParkMarkers, setVisibleParkMarkers] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const mapRef = useRef();
 
   useEffect(() => {
@@ -96,6 +96,7 @@ export default function PlaceholderScreen() {
         initialRegion={initial_Region}
         showsUserLocation={true}
         showsMyLocationButton={true}
+        customMapStyle={darkMapStyle} 
         ref={mapRef}
       >
         {visibleSchoolMarkers &&
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 20,
     right: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: '#37505C',
     padding: 10,
     borderRadius: 5,
   },
@@ -192,3 +193,111 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+const darkMapStyle = [
+  {
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#121212', // Dark background color
+      },
+    ],
+  },
+  {
+    elementType: 'labels.icon',
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
+  },
+  {
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ],
+  },
+  {
+    elementType: 'labels.text.stroke',
+    stylers: [
+      {
+        color: '#121212', 
+      },
+    ],
+  },
+  {
+    featureType: 'administrative',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#2E2E2E', 
+      },
+    ],
+  },
+  {
+    featureType: 'administrative.country',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#CCCCCC', 
+      },
+    ],
+  },
+  {
+    featureType: 'poi',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ]
+  },
+
+  {
+    featureType: 'poi.park',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#1E1E1E', 
+      },
+    ],
+  },
+  {
+    featureType: 'road',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#333333',
+      },
+    ],
+  },
+  {
+    featureType: 'road',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ],
+  },
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#000000', 
+      },
+    ],
+  },
+  {
+    featureType: 'water',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ],
+  },
+];

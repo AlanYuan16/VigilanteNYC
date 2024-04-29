@@ -122,7 +122,7 @@ export default function PlaceholderScreen() {
         radius={40}
         extent={200}
         tracksViewChanges={false}
-        mapPadding={{top:20, right:0, left:0, bottom:0}}
+        mapPadding={{top:50, right:0, left:0, bottom:0}}
       
     >
         {/* {markers.map((markers, index) =>(
@@ -272,4 +272,3 @@ const mapStyle = [
     ],
   },
 ];
-
