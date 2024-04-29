@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: Dimensions.get('window').height * 0.1, // Adjust the marginTop as needed
+    marginTop: Dimensions.get('window').height * 0.1,
   },
   welcome: {
     color: 'white',

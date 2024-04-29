@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
 import parks from './parks.json';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { Dimensions } from 'react-native';
 
 const NYC_BOUNDARY = {
   latitude: 40.7128,
@@ -166,8 +167,8 @@ const styles = StyleSheet.create({
   },
   toggleButton: {
     position: 'absolute',
-    top: 20,
-    right: 20,
+    top: Dimensions.get('window').height * 0.88,
+    right: Dimensions.get('window').width * 0.01,
     backgroundColor: '#37505C',
     padding: 10,
     borderRadius: 5,
@@ -178,9 +179,10 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     position: 'absolute',
-    top: 70,
-    right: 20,
+    top: Dimensions.get('window').height * 0.75, // Adjust the top value
+    right: Dimensions.get('window').width * 0.01,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: 10, // Add padding
     borderRadius: 5,
   },
   dropdownButton: {
@@ -193,6 +195,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
 
 const darkMapStyle = [
   {
