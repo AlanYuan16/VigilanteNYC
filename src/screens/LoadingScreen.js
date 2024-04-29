@@ -30,10 +30,10 @@ const LoadingScreen = () => {
       <View style={styles.progressContainer}>
         <Progress.Bar
           progress={progress}
-          width={Dimensions.get('window').width * 0.4} // 80% of the window width
+          width={Dimensions.get('window').width * 0.4} 
           color="white" 
           borderColor="black" 
-          marginTop={Dimensions.get('window').height * 0.57} // 5% of the window height
+          marginTop={Dimensions.get('window').height * 0.57} 
           style={styles.progressBar}
         />
       </View>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: Dimensions.get('window').height * 0.1, // 10% of the window height
+    marginTop: Dimensions.get('window').height * 0.1, 
   },
   welcome: {
     color: 'white',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     position: 'absolute',
-    bottom: Dimensions.get('window').height * 0.3, // 10% of the window height
+    bottom: Dimensions.get('window').height * 0.3, 
     left: 0,
     right: 0,
   },
