@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import MapView ,{ PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { View, Alert, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
@@ -22,9 +22,9 @@ const initial_Region = {
 
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
-  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(false); // Initialize to false
-  const [visibleParkMarkers, setVisibleParkMarkers] = useState(false); // Initialize to false
-  const [dropdownVisible, setDropdownVisible] = useState(false); // State to track visibility of dropdown
+  const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(false);
+  const [visibleParkMarkers, setVisibleParkMarkers] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const mapRef = useRef();
 
   useEffect(() => {
@@ -96,6 +96,7 @@ export default function PlaceholderScreen() {
         initialRegion={initial_Region}
         showsUserLocation={true}
         showsMyLocationButton={true}
+        customMapStyle={darkMapStyle} 
         ref={mapRef}
       >
         {visibleSchoolMarkers &&
@@ -107,7 +108,7 @@ export default function PlaceholderScreen() {
                 longitude: schoolMarker.Longitude,
               }}
               pinColor="blue"
-              onPress={() => handleMarkerPress(schoolMarker.school_name)} 
+              onPress={() => handleMarkerPress(schoolMarker.school_name)}
             />
           ))}
         {visibleParkMarkers &&
@@ -177,3 +178,111 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+const darkMapStyle = [
+  {
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#121212', // Dark background color
+      },
+    ],
+  },
+  {
+    elementType: 'labels.icon',
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
+  },
+  {
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ],
+  },
+  {
+    elementType: 'labels.text.stroke',
+    stylers: [
+      {
+        color: '#121212', 
+      },
+    ],
+  },
+  {
+    featureType: 'administrative',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#2E2E2E', 
+      },
+    ],
+  },
+  {
+    featureType: 'administrative.country',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#CCCCCC', 
+      },
+    ],
+  },
+  {
+    featureType: 'poi',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ]
+  },
+
+  {
+    featureType: 'poi.park',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#1E1E1E', 
+      },
+    ],
+  },
+  {
+    featureType: 'road',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#333333',
+      },
+    ],
+  },
+  {
+    featureType: 'road',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ],
+  },
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#000000', 
+      },
+    ],
+  },
+  {
+    featureType: 'water',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', 
+      },
+    ],
+  },
+];
