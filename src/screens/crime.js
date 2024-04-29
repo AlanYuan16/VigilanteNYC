@@ -73,13 +73,12 @@ export default function PlaceholderScreen() {
   });
   
   async function moveToLocation(latitude, longitude) {
-    mapRef.current.animateCamera(
+    mapRef.current.animateToRegion(
       {
         latitude,
         longitude,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-        zoom: 20
       },
       100
     );   
