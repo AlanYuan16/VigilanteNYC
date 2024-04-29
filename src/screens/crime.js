@@ -81,7 +81,7 @@ export default function PlaceholderScreen() {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
       },
-      3000,
+      100
     );   
   }
   return (
@@ -167,23 +167,109 @@ const styles = StyleSheet.create({
 });
 
 const mapStyle = [
-  [
-    {
-      "featureType": "poi.business",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "labels.text",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    }
-  ]
+  {
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#121212', // Dark background color
+      },
+    ],
+  },
+  {
+    elementType: 'labels.icon',
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
+  },
+  {
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', // White text color
+      },
+    ],
+  },
+  {
+    elementType: 'labels.text.stroke',
+    stylers: [
+      {
+        color: '#121212', // Dark text stroke color
+      },
+    ],
+  },
+  {
+    featureType: 'administrative',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#2E2E2E', // Dark administrative areas color
+      },
+    ],
+  },
+  {
+    featureType: 'administrative.country',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#CCCCCC', // Light grey country labels
+      },
+    ],
+  },
+  {
+    featureType: 'poi',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', // White POI labels
+      },
+    ],
+  },
+  {
+    featureType: 'poi.park',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#1E1E1E', // Dark park area color
+      },
+    ],
+  },
+  {
+    featureType: 'road',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#333333', // Dark road color
+      },
+    ],
+  },
+  {
+    featureType: 'road',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', // White road labels
+      },
+    ],
+  },
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#000000', // Black water color
+      },
+    ],
+  },
+  {
+    featureType: 'water',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#FFFFFF', // White water labels
+      },
+    ],
+  },
 ];
+

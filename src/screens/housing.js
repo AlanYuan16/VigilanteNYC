@@ -19,17 +19,18 @@ const ZillowEmbed = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, darkModeStyles.container]}>
       {showSearch && (
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, darkModeStyles.inputContainer]}>
           <TextInput
-            style={styles.input}
+            style={[styles.input, darkModeStyles.input]}
             placeholder="Enter ZIP code"
+            placeholderTextColor={darkModeStyles.placeholderTextColor}
             value={zipcode}
             onChangeText={handleZipcodeChange}
             keyboardType="numeric"
           />
-          <Button title="Submit" onPress={handleSubmit} />
+          <Button title="Submit" onPress={handleSubmit} color={darkModeStyles.buttonColor} />
         </View>
       )}
       {url ? (
@@ -71,6 +72,21 @@ const styles = StyleSheet.create({
     marginRight: 10,
     paddingHorizontal: 10,
   },
+});
+
+const darkModeStyles = StyleSheet.create({
+  container: {
+    backgroundColor: '#000', // Dark background color
+  },
+  inputContainer: {
+    backgroundColor: '#222', // Darker input container background color
+  },
+  input: {
+    color: '#fff', // Text color for input in dark mode
+    borderColor: '#444', // Darker border color for input
+  },
+  placeholderTextColor: '#777', // Placeholder text color for input in dark mode
+  buttonColor: '#00f', // Button color in dark mode
 });
 
 export default ZillowEmbed;
