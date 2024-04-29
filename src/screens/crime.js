@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, memo } from 'react';
 import { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { View, Alert, StyleSheet, Text } from 'react-native';
 import * as Location from 'expo-location';
@@ -6,7 +6,7 @@ import MapView from "react-native-map-clustering"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 
-import markers2 from './markers2.json';
+import  markers2  from './markers2.json';
 
 
 

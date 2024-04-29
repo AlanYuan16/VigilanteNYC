@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import MapView ,{ PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView ,{ PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { View, Alert, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
@@ -106,9 +106,17 @@ export default function PlaceholderScreen() {
                 latitude: schoolMarker.Latitude,
                 longitude: schoolMarker.Longitude,
               }}
-              pinColor="blue"
-              onPress={() => handleMarkerPress(schoolMarker.school_name)} 
-            />
+              pinColor="blue" 
+            >
+              <Callout>
+                <View style={{ padding: 10}}>
+                  <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
+                    {schoolMarker.school_name}
+                  </Text>
+                </View>
+              </Callout>              
+            </Marker>
+
           ))}
         {visibleParkMarkers &&
           parks.map((park, index) => (
@@ -119,8 +127,15 @@ export default function PlaceholderScreen() {
                 longitude: park.longitude,
               }}
               pinColor="green"
-              onPress={() => handleMarkerPress(park.name)}
-            />
+            >
+              <Callout>
+                <View style={{ padding: 10}}>
+                  <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
+                    {park.name}
+                  </Text>
+                </View>
+              </Callout>
+            </Marker>
           ))}
       </MapView>
       <TouchableOpacity onPress={toggleDropdown} style={styles.toggleButton}>
