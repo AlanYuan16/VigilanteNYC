@@ -27,6 +27,7 @@ const  initial_Region ={
 }
 
 export default function PlaceholderScreen() {
+  
   const [userLocation, setUserLocation] = useState(null);
   const mapRef = useRef();
 
@@ -87,7 +88,8 @@ export default function PlaceholderScreen() {
     );   
   }
   return (
-    <View style={{ marginTop: 20, flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#000000'}}>
+    <View style={{marginTop: 0, flex: 1}}>
       <GooglePlacesAutocomplete
         placeholder='Search'
         fetchDetails={true}
@@ -124,7 +126,7 @@ export default function PlaceholderScreen() {
         radius={40}
         extent={200}
         tracksViewChanges={false}
-        mapPadding={{top:50, right:0, left:0, bottom:0}}
+        mapPadding={{top: 5, right:0, left:0, bottom:0}}
       
     >
         {/* {markers.map((markers, index) =>(
@@ -155,16 +157,18 @@ export default function PlaceholderScreen() {
       </MapView>
       
     </View>
+    </SafeAreaView>
   );
+  
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    borderBlockColor: 'black',
   },
   map: {
     flex: 1,
-    
   },
 });
 

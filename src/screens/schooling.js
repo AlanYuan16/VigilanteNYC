@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
     color: '#FFF', // White text color
+    padding: 50,
   },
   searchContainer: {
     alignItems: 'center',

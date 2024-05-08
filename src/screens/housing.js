@@ -57,36 +57,38 @@ const styles = StyleSheet.create({
         elevation: 8,
       },
       ios: {
-        shadowColor: 'rgba(0,0,0, .2)',
-        shadowOffset: { height: 1, width: 1 },
-        shadowOpacity: 1,
-        shadowRadius: 1,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
       },
     }),
   },
   input: {
     flex: 1,
-    height: 40,
+    color: '#FFFFFF', // Text color for input in dark mode
+    height: 40, // Increase the height
     paddingHorizontal: 10,
     borderRadius: 20, // Oval-shaped input
     borderWidth: 1,
+    borderColor: '#CCCCCC', // Border color
     marginRight: 10,
   },
 });
 
 const darkModeStyles = StyleSheet.create({
   container: {
-    backgroundColor: '#000', // Dark background color
+    backgroundColor: '#000000', // Dark background color
   },
   inputContainer: {
-    backgroundColor: '#222', // Darker input container background color
+    backgroundColor: '#222222', // Darker input container background color
   },
   input: {
-    color: '#fff', // Text color for input in dark mode
-    borderColor: '#444', // Darker border color for input
+    color: '#FFFFFF', // Text color for input in dark mode
+    borderColor: '#FFFFFF', // Darker border color for input
   },
-  placeholderTextColor: '#777', // Placeholder text color for input in dark mode
-  buttonColor: '#00f', // Button color in dark mode
+  placeholderTextColor: '#777777', // Placeholder text color for input in dark mode
+  buttonColor: '#FFFFFF', // Button color in dark mode
 });
 
 export default ZillowEmbed;

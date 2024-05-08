@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
 import parks from './parks.json';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { Dimensions } from 'react-native';
 
 const NYC_BOUNDARY = {
   latitude: 40.7128,
@@ -145,10 +146,10 @@ export default function PlaceholderScreen() {
       {dropdownVisible && (
         <View style={styles.dropdown}>
           <TouchableOpacity onPress={toggleSchoolMarkers} style={styles.dropdownButton}>
-            <Text style={styles.dropdownButtonText}>School</Text>
+            <Text style={styles.dropdownButtonText1}>School</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggleParkMarkers} style={styles.dropdownButton}>
-            <Text style={styles.dropdownButtonText}>Parks</Text>
+            <Text  style={styles.dropdownButtonText}>Parks</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -166,8 +167,8 @@ const styles = StyleSheet.create({
   },
   toggleButton: {
     position: 'absolute',
-    top: 20,
-    right: 20,
+    top: Dimensions.get('window').height * 0.06,
+    right: Dimensions.get('window').width * 0.01,
     backgroundColor: '#37505C',
     padding: 10,
     borderRadius: 5,
@@ -178,9 +179,10 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     position: 'absolute',
-    top: 70,
-    right: 20,
+    top: Dimensions.get('window').height * 0.11, // Adjust the top value
+    right: Dimensions.get('window').width * 0.01,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: 10, // Add padding
     borderRadius: 5,
   },
   dropdownButton: {
@@ -189,10 +191,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   dropdownButtonText: {
-    color: 'white',
+    color: 'green',
     textAlign: 'center',
   },
+  dropdownButtonText1: {
+    color: 'blue',
+    textAlign: 'center',
+  },
+  
 });
+
 
 const darkMapStyle = [
   {
