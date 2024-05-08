@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
-import data from '../api/Schoolingv2.json';
+import data from '../api/school.json';
 
 export default function PlaceholderScreen() {
   const [zipcode, setZipcode] = useState('');
