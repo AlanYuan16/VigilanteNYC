@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import MapView ,{ PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { View, Alert, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as Location from 'expo-location';
 import schoolMarkers from './schoolMarkers.json';
@@ -97,7 +97,7 @@ export default function PlaceholderScreen() {
         initialRegion={initial_Region}
         showsUserLocation={true}
         showsMyLocationButton={true}
-        customMapStyle={darkMapStyle} 
+        customMapStyle={darkMapStyle}
         ref={mapRef}
       >
         {visibleSchoolMarkers &&
@@ -108,15 +108,15 @@ export default function PlaceholderScreen() {
                 latitude: schoolMarker.Latitude,
                 longitude: schoolMarker.Longitude,
               }}
-              pinColor="blue" 
+              pinColor="blue"
             >
               <Callout>
-                <View style={{ padding: 10}}>
-                  <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
+                <View style={{ padding: 10 }}>
+                  <Text style={{ fontSize: 20, textAlign: 'center' }}>
                     {schoolMarker.school_name}
                   </Text>
                 </View>
-              </Callout>              
+              </Callout>
             </Marker>
 
           ))}
@@ -131,8 +131,8 @@ export default function PlaceholderScreen() {
               pinColor="green"
             >
               <Callout>
-                <View style={{ padding: 10}}>
-                  <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
+                <View style={{ padding: 10 }}>
+                  <Text style={{ fontSize: 20, textAlign: 'center' }}>
                     {park.name}
                   </Text>
                 </View>
@@ -146,7 +146,7 @@ export default function PlaceholderScreen() {
       {dropdownVisible && (
         <View style={styles.dropdown}>
           <TouchableOpacity onPress={toggleSchoolMarkers} style={styles.dropdownButton}>
-            <Text style={styles.dropdownButtonText}>School</Text>
+            <Text style={styles.dropdownButtonText} color="blue">School</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggleParkMarkers} style={styles.dropdownButton}>
             <Text style={styles.dropdownButtonText}>Parks</Text>
@@ -218,7 +218,7 @@ const darkMapStyle = [
     elementType: 'labels.text.fill',
     stylers: [
       {
-        color: '#FFFFFF', 
+        color: '#FFFFFF',
       },
     ],
   },
@@ -226,7 +226,7 @@ const darkMapStyle = [
     elementType: 'labels.text.stroke',
     stylers: [
       {
-        color: '#121212', 
+        color: '#121212',
       },
     ],
   },
@@ -235,7 +235,7 @@ const darkMapStyle = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#2E2E2E', 
+        color: '#2E2E2E',
       },
     ],
   },
@@ -244,7 +244,7 @@ const darkMapStyle = [
     elementType: 'labels.text.fill',
     stylers: [
       {
-        color: '#CCCCCC', 
+        color: '#CCCCCC',
       },
     ],
   },
@@ -253,7 +253,7 @@ const darkMapStyle = [
     elementType: 'labels.text.fill',
     stylers: [
       {
-        color: '#FFFFFF', 
+        color: '#FFFFFF',
       },
     ]
   },
@@ -263,7 +263,7 @@ const darkMapStyle = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#1E1E1E', 
+        color: '#1E1E1E',
       },
     ],
   },
@@ -281,7 +281,7 @@ const darkMapStyle = [
     elementType: 'labels.text.fill',
     stylers: [
       {
-        color: '#FFFFFF', 
+        color: '#FFFFFF',
       },
     ],
   },
@@ -290,7 +290,7 @@ const darkMapStyle = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#000000', 
+        color: '#000000',
       },
     ],
   },
@@ -299,7 +299,7 @@ const darkMapStyle = [
     elementType: 'labels.text.fill',
     stylers: [
       {
-        color: '#FFFFFF', 
+        color: '#FFFFFF',
       },
     ],
   },

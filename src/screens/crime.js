@@ -6,7 +6,7 @@ import MapView from "react-native-map-clustering"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 
-import  markers2  from './markers2.json';
+import markers2 from './markers2.json';
 
 
 const NYC_BOUNDARY = {
@@ -15,9 +15,9 @@ const NYC_BOUNDARY = {
   latitudeDelta: 0.5,
   longitudeDelta: 0.5,
 };
-const  initial_Region ={
-  latitude: 40.769, 
-  longitude: -73.982, 
+const initial_Region = {
+  latitude: 40.769,
+  longitude: -73.982,
   latitudeDelta: 0.0922,
   longitudeDelta: 0.0421,
 }
@@ -60,18 +60,18 @@ export default function PlaceholderScreen() {
 
   const nycBoundaries = {
     northEast: { latitude: 40.92, longitude: -74.27 },
-    southWest: { latitude: 40.49, longitude: -73.68}
+    southWest: { latitude: 40.49, longitude: -73.68 }
   };
-  
+
   useEffect(() => {
-    if(mapRef.current){
+    if (mapRef.current) {
       mapRef.current.setMapBoundaries(
         nycBoundaries.northEast,
         nycBoundaries.southWest
       );
     }
   });
-  
+
   async function moveToLocation(latitude, longitude) {
     mapRef.current.animateToRegion(
       {
@@ -81,10 +81,10 @@ export default function PlaceholderScreen() {
         longitudeDelta: 0.0421,
       },
       100
-    );   
+    );
   }
   return (
-    <SafeAreaView style={{ marginTop: 20, flex: 1}}>
+    <SafeAreaView style={{ marginTop: 50, flex: 1 }}>
       <GooglePlacesAutocomplete
         placeholder='Search'
         fetchDetails={true}
@@ -106,7 +106,7 @@ export default function PlaceholderScreen() {
         onFail={error => console.log(error)}
         styles={{
           container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
-          listView: { backgroundColor: "white"}
+          listView: { backgroundColor: "white" }
         }}
       />
 
@@ -118,13 +118,13 @@ export default function PlaceholderScreen() {
         showsMyLocationButton={true}
         customMapStyle={mapStyle}
         ref={mapRef}
-        clusterColor='#F3BDB1'   
+        clusterColor='#F3BDB1'
         radius={40}
         extent={200}
         tracksViewChanges={false}
-        mapPadding={{top:40, right:0, left:0, bottom:0}}
-      
-    >
+        mapPadding={{ top: 40, right: 0, left: 0, bottom: 0 }}
+
+      >
         {/* {markers.map((markers, index) =>(
           <Marker key={index} coordinate={{latitude: markers.Latitude, longitude: markers.Longitude}} opacity={0.7}/>
         ))} */}
@@ -132,24 +132,24 @@ export default function PlaceholderScreen() {
         {/* {markers2.map((markers2, index) =>(
           <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}/>
         ))} */}
-        {memoizedMarkers.map((markers2, index) =>(
-          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}>
+        {memoizedMarkers.map((markers2, index) => (
+          <Marker key={index} coordinate={{ latitude: markers2.Latitude, longitude: markers2.Longitude }} opacity={1}>
             {/* <Text>{testM.LAW_CAT_CD}</Text> */}
             <Callout>
-              <View style={{ padding: 10}}>
-                <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
+              <View style={{ padding: 10 }}>
+                <Text style={{ fontSize: 20, textAlign: 'center' }}>
                   {markers2.OFNS_DESC}
                 </Text>
-                <Text style={{ fontSize: 10 ,textAlign: 'center'}}>
+                <Text style={{ fontSize: 10, textAlign: 'center' }}>
                   {markers2.CMPLNT_FR_DT}
                 </Text>
               </View>
             </Callout>
           </Marker>
         ))}
-        
+
       </MapView>
-      
+
     </SafeAreaView>
   );
 }
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
-    
+
   },
 });
 
