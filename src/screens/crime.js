@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
-import { View, Alert, StyleSheet, Text, SafeAreaView } from 'react-native';
+import { View, Alert, StyleSheet, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
 import MapView from "react-native-map-clustering"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -83,6 +83,13 @@ export default function PlaceholderScreen() {
       100
     );
   }
+  
+  const handleAlert = (offence, level, description,  borough, time, department) => {
+    Alert.alert(offence, 'Level: ' + level + '\nDescription: ' + description + ''+ '\nBorough: ' + borough + '\nTime: ' + time + '\nDepartment: ' + department,
+    [
+      {text: 'ok', onPress: () => console.log('ok pressed')}
+    ])
+  }
   return (
     <SafeAreaView style={{ marginTop: 50, flex: 1 }}>
       <GooglePlacesAutocomplete
@@ -133,7 +140,8 @@ export default function PlaceholderScreen() {
           <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}/>
         ))} */}
         {memoizedMarkers.map((markers2, index) => (
-          <Marker key={index} coordinate={{ latitude: markers2.Latitude, longitude: markers2.Longitude }} opacity={1}>
+          <Marker key={index} coordinate={{ latitude: markers2.Latitude, longitude: markers2.Longitude }} opacity={1} tracksViewChanges={false} 
+          onCalloutPress={() => handleAlert(markers2.OFNS_DESC, markers2.LAW_CAT_CD, markers2.PD_DESC, markers2.BORO_NM, markers2.CMPLNT_FR_TM, markers2.JURIS_DESC)}>
             {/* <Text>{testM.LAW_CAT_CD}</Text> */}
             <Callout>
               <View style={{ padding: 10 }}>
