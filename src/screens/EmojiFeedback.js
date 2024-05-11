@@ -48,7 +48,7 @@ const EmojiFeedbackPage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.heading}>Enter Your Zip Code:</Text>
+      <Text style={styles.heading}>Select a Reaction: </Text>
       <TextInput
         style={styles.input}
         placeholder="Zip Code"
@@ -64,23 +64,23 @@ const EmojiFeedbackPage = () => {
           <View style={styles.emojiContainer}>
             <TouchableOpacity onPress={() => handleEmojiSelection('😍')}>
               <Text style={selectedEmoji === '😍' ? styles.selectedEmoji : styles.emoji}>😍</Text>
-              <Text>{counters['😍']}</Text>
+              <Text>{counters['😍']}</Text><Text style={{color: 'white'}}>{counters['😍']}</Text> 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleEmojiSelection('😊')}>
               <Text style={selectedEmoji === '😊' ? styles.selectedEmoji : styles.emoji}>😊</Text>
-              <Text>{counters['😊']}</Text>
+              <Text>{counters['😊']}</Text><Text style={{color: 'white'}}>{counters['😊']}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleEmojiSelection('😐')}>
               <Text style={selectedEmoji === '😐' ? styles.selectedEmoji : styles.emoji}>😐</Text>
-              <Text>{counters['😐']}</Text>
+              <Text>{counters['😐']}</Text><Text style={{color: 'white'}}>{counters['😐']}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleEmojiSelection('😔')}>
               <Text style={selectedEmoji === '😔' ? styles.selectedEmoji : styles.emoji}>😔</Text>
-              <Text>{counters['😔']}</Text>
+              <Text>{counters['😔']}</Text><Text stlye={{color: 'white'}}>{counters['😔']}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleEmojiSelection('😡')}>
               <Text style={selectedEmoji === '😡' ? styles.selectedEmoji : styles.emoji}>😡</Text>
-              <Text>{counters['😡']}</Text>
+              <Text>{counters['😡']}</Text><Text style={{color: 'white'}}>{counters['😡']}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -94,11 +94,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
   heading: {
     fontSize: 20,
     marginBottom: 10,
+    color: '#FFFFFF',
   },
   input: {
     width: '80%',
@@ -107,6 +108,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     marginBottom: 20,
+    color: 'white',
   },
   emojiContainer: {
     flexDirection: 'row',
@@ -119,13 +121,14 @@ const styles = StyleSheet.create({
   selectedEmoji: {
     fontSize: 40,
     marginHorizontal: 10,
-    borderColor: 'blue',
+    borderColor: 'white',
     borderWidth: 2,
     borderRadius: 5,
     padding: 5,
+    color: 'white',
   },
   submitButton: {
-    backgroundColor: 'blue',
+    backgroundColor: 'grey',
     padding: 10,
     borderRadius: 5,
   },
