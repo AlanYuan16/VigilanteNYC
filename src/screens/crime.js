@@ -144,10 +144,9 @@ export default function PlaceholderScreen() {
         ))} */}
         
         {markers2.map((markers2, index) =>(
-          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1} 
-          onCalloutPress={() => handleAlert(markers2.OFNS_DESC, markers2.LAW_CAT_CD, markers2.PD_DESC, markers2.BORO_NM, markers2.CMPLNT_FR_TM, markers2.JURIS_DESC)}>
+          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}>
             {/* <Text>{testM.LAW_CAT_CD}</Text> */}
-            <Callout>
+            <Callout onPress={() => handleAlert(markers2.OFNS_DESC, markers2.LAW_CAT_CD, markers2.PD_DESC, markers2.BORO_NM, markers2.CMPLNT_FR_TM, markers2.JURIS_DESC)}>
               <View style={{ padding: 10}}>
                 <Text style={{ fontSize: 20 ,textAlign: 'center'}}>
                   {markers2.OFNS_DESC}
