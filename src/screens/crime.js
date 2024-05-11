@@ -87,6 +87,12 @@ export default function PlaceholderScreen() {
       100
     );   
   }
+  const handleAlert = (offence, level, description,  borough, time, department) => {
+    Alert.alert(offence, 'Level: ' + level + '\nDescription: ' + description + ''+ '\nBorough: ' + borough + '\nTime: ' + time + '\nDepartment: ' + department,
+    [
+      {text: 'ok', onPress: () => console.log('ok pressed')}
+    ])
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#000000'}}>
     <View style={{marginTop: 0, flex: 1}}>
@@ -138,7 +144,8 @@ export default function PlaceholderScreen() {
         ))} */}
         
         {markers2.map((markers2, index) =>(
-          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1}>
+          <Marker key={index} coordinate={{latitude: markers2.Latitude, longitude: markers2.Longitude}} opacity={1} 
+          onCalloutPress={() => handleAlert(markers2.OFNS_DESC, markers2.LAW_CAT_CD, markers2.PD_DESC, markers2.BORO_NM, markers2.CMPLNT_FR_TM, markers2.JURIS_DESC)}>
             {/* <Text>{testM.LAW_CAT_CD}</Text> */}
             <Callout>
               <View style={{ padding: 10}}>
@@ -149,6 +156,7 @@ export default function PlaceholderScreen() {
                   {markers2.CMPLNT_FR_DT}
                 </Text>
               </View>
+              <Text style={{fontSize: 12, opacity: 0.7}}>Click for more info...</Text>
             </Callout>
           </Marker>
         ))}
