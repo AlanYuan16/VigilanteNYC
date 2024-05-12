@@ -12,7 +12,7 @@ import  markers2  from './markers2.json';
 
 
 
-
+//setting boundaries for NYC
 const NYC_BOUNDARY = {
   latitude: 40.7128,
   longitude: -74.0060,
@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
   },
 });
 
+//converting map to dark mode
 const mapStyle = [
   {
     elementType: 'geometry',
