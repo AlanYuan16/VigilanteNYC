@@ -62,7 +62,7 @@ const PlaceholderScreen = () => {
           <View style={styles.selectedSchoolContainer}>
             <Text style={styles.selectedSchoolTitle}>{selectedSchool.school_name}</Text>
             <Text style={styles.description}>{selectedSchool.description}</Text>
-            <Text style={styles.additionalInfo}>Student Safety: {selectedSchool.stu_safety}%</Text>
+            <Text style={styles.additionalInfo}>Student Safety Score: {selectedSchool.stu_safety}%</Text>
             <Text style={styles.additionalInfo}>PSAL Male Sports: {selectedSchool.psal_male}</Text>
             <Text style={styles.additionalInfo}>PSAL Female Sports: {selectedSchool.psal_female}</Text>
             <TouchableOpacity onPress={closeDetails}>
