@@ -90,7 +90,7 @@ export default function PlaceholderScreen() {
   const handleAlert = (offence, level, description,  borough, time, department) => {
     Alert.alert(offence, 'Level: ' + level + '\nDescription: ' + description + ''+ '\nBorough: ' + borough + '\nTime: ' + time + '\nDepartment: ' + department,
     [
-      {text: 'ok', onPress: () => console.log('ok pressed')}
+      {text: 'OK', onPress: () => console.log('ok pressed')}
     ])
   }
   return (
