@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Button, Platform } from 'react-native';
 import { WebView } from 'react-native-webview';
 
+//hooks
 const ZillowEmbed = () => {
   const [zipcode, setZipcode] = useState('');
   const [url, setUrl] = useState('');
   const [showSearch, setShowSearch] = useState(true);
 
+  //zipcode useState
   const handleZipcodeChange = (text) => {
     setZipcode(text);
   };
 
+  //url embed
   const handleSubmit = () => {
     if (zipcode) {
       setUrl(`https://www.zillow.com/new-york-ny-${zipcode}`);
@@ -44,6 +47,8 @@ const ZillowEmbed = () => {
   );
 };
 
+
+//styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -66,29 +71,32 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    color: '#FFFFFF', // Text color for input in dark mode
-    height: 40, // Increase the height
+    color: '#FFFFFF', 
     paddingHorizontal: 10,
-    borderRadius: 20, // Oval-shaped input
+    borderRadius: 20, 
     borderWidth: 1,
-    borderColor: '#CCCCCC', // Border color
+    borderColor: '#CCCCCC', 
     marginRight: 10,
   },
 });
-
+//created a separate object for dark mode styles prior to the search
 const darkModeStyles = StyleSheet.create({
   container: {
-    backgroundColor: '#000000', // Dark background color
+    backgroundColor: '#000000', 
   },
   inputContainer: {
-    backgroundColor: '#222222', // Darker input container background color
+    backgroundColor: '#222222', 
   },
   input: {
-    color: '#FFFFFF', // Text color for input in dark mode
-    borderColor: '#FFFFFF', // Darker border color for input
+    color: '#FFFFFF', 
+    borderColor: '#FFFFFF', 
   },
-  placeholderTextColor: '#777777', // Placeholder text color for input in dark mode
-  buttonColor: '#FFFFFF', // Button color in dark mode
+  placeholderTextColor: '#777777', 
+  buttonColor:  {
+  backgroundColor: 'white', 
+  borderRadius: 20, 
+  },
 });
+
 
 export default ZillowEmbed;

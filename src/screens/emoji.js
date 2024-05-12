@@ -16,10 +16,12 @@ const firebaseConfig = {
   measurementId: "G-C9YRENCTEP"
 };
 
-
+//firebase initialization (couldn't be completed)
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+
+//hooks
 const EmojiFeedbackPage = () => {
   const [zipCode, setZipCode] = useState('');
   const [selectedEmoji, setSelectedEmoji] = useState('');
@@ -27,10 +29,12 @@ const EmojiFeedbackPage = () => {
   const [showEmojis, setShowEmojis] = useState(false);
   const [lastZipCode, setLastZipCode] = useState('');
 
+  //handle zipcode change
   const handleZipCodeChange = (text) => {
     setZipCode(text);
   };
 
+  
   const handleSubmitZipCode = () => {
     if (zipCode === '') {
       Alert.alert('Invalid input', 'Please enter a zip code');
@@ -61,6 +65,7 @@ const EmojiFeedbackPage = () => {
     setSelectedEmoji(emoji);
   };
 
+  //render
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Enter Zip Code:</Text>
@@ -109,24 +114,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#121212', // Dark background color
-    color: '#FFFFFF', // Text color for dark mode
+    backgroundColor: '#121212', 
+    color: '#FFFFFF', 
   },
   heading: {
     fontSize: 20,
     marginBottom: 10,
-    color: '#FFFFFF', // Text color for dark mode
+    color: '#FFFFFF', 
   },
   input: {
     width: '80%',
     height: 40,
-    borderColor: '#FFFFFF', // Border color for dark mode
+    borderColor: '#FFFFFF', 
     borderWidth: 1,
     padding: 10,
     marginBottom: 20,
-    color: '#FFFFFF', // Text color for dark mode
-    backgroundColor: '#333333', // Input background color for dark mode
-    borderRadius: 5, // Rounded corners for input
+    color: '#FFFFFF', 
+    backgroundColor: '#333333',
+    borderRadius: 5,
   },
   emojiContainer: {
     flexDirection: 'row',
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
   emoji: {
     fontSize: 40,
     marginHorizontal: 10,
-    color: '#FFFFFF', // Emoji color for dark mode
+    color: '#FFFFFF', 
   },
   selectedEmoji: {
     fontSize: 40,
@@ -144,15 +149,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     padding: 5,
-    color: '#FFFFFF', // Emoji color for dark mode
+    color: '#FFFFFF', 
   },
   submitButton: {
-    backgroundColor: '#2196F3', // Submit button background color for dark mode
-    padding: 10,
+    backgroundColor: '#2196F3', 
     borderRadius: 5,
   },
   submitButtonText: {
-    color: '#FFFFFF', // Text color for dark mode
+    color: '#FFFFFF', 
     fontSize: 16,
   },
 });

@@ -31,6 +31,7 @@ export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
   const mapRef = useRef();
 
+  //request location permission to allow user location to be displayed
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -44,6 +45,7 @@ export default function PlaceholderScreen() {
     })();
   }, []);
 
+  //warn and limit the user about the scope of our map 
   useEffect(() => {
     if (userLocation && !isInNYC(userLocation)) {
       Alert.alert(
@@ -62,6 +64,7 @@ export default function PlaceholderScreen() {
     );
   };
 
+  //soft lock the camera to NYC
   const nycBoundaries = {
     northEast: { latitude: 40.92, longitude: -74.27 },
     southWest: { latitude: 40.49, longitude: -73.68}
@@ -76,6 +79,7 @@ export default function PlaceholderScreen() {
     }
   });
   
+  //helper fuction to move camera for search bar
   async function moveToLocation(latitude, longitude) {
     mapRef.current.animateToRegion(
       {
@@ -87,6 +91,7 @@ export default function PlaceholderScreen() {
       100
     );   
   }
+  // format alert for handling onPress behavior to display more info
   const handleAlert = (offence, level, description,  borough, time, department) => {
     Alert.alert(offence, 'Level: ' + level + '\nDescription: ' + description + ''+ '\nBorough: ' + borough + '\nTime: ' + time + '\nDepartment: ' + department,
     [
@@ -94,6 +99,7 @@ export default function PlaceholderScreen() {
     ])
   }
   return (
+    //search bar autocomplete function
     <SafeAreaView style={{flex: 1, backgroundColor: '#000000'}}>
     <View style={{marginTop: 0, flex: 1}}>
       <GooglePlacesAutocomplete

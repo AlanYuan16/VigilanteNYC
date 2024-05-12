@@ -1,5 +1,3 @@
-//This screen is for testing purposes only and will get scrapped once the app is fully functional
-
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, StyleSheet, Alert } from 'react-native';
 

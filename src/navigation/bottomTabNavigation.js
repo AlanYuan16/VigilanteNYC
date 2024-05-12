@@ -37,7 +37,7 @@ const CustomBottomTabNavigator = () => {
                 iconSource = focused ? ReviewIcon : ReviewIcon;
             }
 
-            // Return an Image component with the appropriate icon source
+            // Returning image with the respective icon
             return <Image source={iconSource} style={{ width: size, height: size }} />;
         },
     })}

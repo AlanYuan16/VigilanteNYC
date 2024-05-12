@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import data from '../api/school.json';
 
+//hooks
 const PlaceholderScreen = () => {
   const [zipcode, setZipcode] = useState('');
   const [filteredSchools, setFilteredSchools] = useState([]);
   const [selectedSchool, setSelectedSchool] = useState(null);
 
+  //filter schools based on zipcode
   useEffect(() => {
     if (zipcode) {
       const schoolsInZip = data.filter(school => school.zip === parseInt(zipcode));
@@ -16,6 +18,7 @@ const PlaceholderScreen = () => {
     }
   }, [zipcode]);
 
+  //change color based on graduation rate
   const renderGraduationRate = (graduationRate) => {
     let color;
     if (graduationRate >= 90) {
@@ -31,15 +34,17 @@ const PlaceholderScreen = () => {
       <Text style={{ color }}>Graduation Rate {graduationRate}%</Text>
     );
   };
-
+  //update the state of the selected school
   const selectSchool = (school) => {
     setSelectedSchool(school);
   };
 
+  //funciton to close popup of more information
   const closeDetails = () => {
     setSelectedSchool(null);
   };
 
+  //rendering 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search High School by Zipcode</Text>
@@ -53,16 +58,18 @@ const PlaceholderScreen = () => {
         />
       </View>
       {selectedSchool ? (
-        <View style={styles.selectedSchoolContainer}>
-          <Text style={styles.selectedSchoolTitle}>{selectedSchool.school_name}</Text>
-          <Text style={styles.description}>{selectedSchool.description}</Text>
-          <Text style={styles.additionalInfo}>Student Safety: {selectedSchool.stu_safety}%</Text>
-          <Text style={styles.additionalInfo}>PSAL Male Sports: {selectedSchool.psal_male}</Text>
-          <Text style={styles.additionalInfo}>PSAL Female Sports: {selectedSchool.psal_female}</Text>
-          <TouchableOpacity onPress={closeDetails}>
-            <Text style={styles.closeButton}>Close</Text>
-          </TouchableOpacity>
-        </View>
+        <ScrollView>
+          <View style={styles.selectedSchoolContainer}>
+            <Text style={styles.selectedSchoolTitle}>{selectedSchool.school_name}</Text>
+            <Text style={styles.description}>{selectedSchool.description}</Text>
+            <Text style={styles.additionalInfo}>Student Safety: {selectedSchool.stu_safety}%</Text>
+            <Text style={styles.additionalInfo}>PSAL Male Sports: {selectedSchool.psal_male}</Text>
+            <Text style={styles.additionalInfo}>PSAL Female Sports: {selectedSchool.psal_female}</Text>
+            <TouchableOpacity onPress={closeDetails}>
+              <Text style={styles.closeButton}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       ) : (
         <>
           <FlatList
@@ -83,7 +90,7 @@ const PlaceholderScreen = () => {
     </View>
   );
 };
-
+//styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -140,7 +147,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     padding: 5,
     marginLeft: 4,
-    alignText: 'left',
   },
   closeButton: {
     color: 'grey',
@@ -151,6 +157,9 @@ const styles = StyleSheet.create({
     color: '#FFF',
     textAlign: 'center',
     marginTop: 20,
+    padding:29,
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
 

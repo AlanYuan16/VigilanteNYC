@@ -7,6 +7,7 @@ import parks from './parks.json';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { Dimensions } from 'react-native';
 
+//Setting boundaries for NYC
 const NYC_BOUNDARY = {
   latitude: 40.7128,
   longitude: -74.0060,
@@ -14,6 +15,8 @@ const NYC_BOUNDARY = {
   longitudeDelta: 0.5,
 };
 
+
+//Starting region of the map
 const initial_Region = {
   latitude: 40.769,
   longitude: -73.982,
@@ -21,6 +24,8 @@ const initial_Region = {
   longitudeDelta: 0.04,
 };
 
+
+//hooks
 export default function PlaceholderScreen() {
   const [userLocation, setUserLocation] = useState(null);
   const [visibleSchoolMarkers, setVisibleSchoolMarkers] = useState(false);
@@ -50,6 +55,7 @@ export default function PlaceholderScreen() {
     }
   }, [userLocation]);
 
+  //function to check if the location is within the boundaries of NYC
   const isInNYC = (location) => {
     return (
       location.latitude > NYC_BOUNDARY.latitude - NYC_BOUNDARY.latitudeDelta &&
@@ -59,11 +65,13 @@ export default function PlaceholderScreen() {
     );
   };
 
+  //latitude and longitude boundaries for NYC
   const nycBoundaries = {
     northEast: { latitude: 40.92, longitude: -74.27 },
     southWest: { latitude: 40.49, longitude: -73.68 },
   };
 
+  //hook to set boundaries of the map
   useEffect(() => {
     if (mapRef.current) {
       mapRef.current.setMapBoundaries(
@@ -88,7 +96,7 @@ export default function PlaceholderScreen() {
   const handleMarkerPress = (markerName) => {
     Alert.alert('Marker Info', `You clicked on ${markerName}`);
   };
-
+//render
   return (
     <View style={styles.container}>
       <MapView
