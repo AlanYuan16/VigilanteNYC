@@ -47,7 +47,7 @@ const PlaceholderScreen = () => {
   //rendering 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search High School by Zipcode</Text>
+      <Text style={styles.title}>Search High Schools by Zip Code</Text>
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
@@ -102,7 +102,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginBottom: 30,
-    color: '#FFF',
+    color: 'white',
+    fontWeight: 'bold',
+
   },
   searchContainer: {
     alignItems: 'center',
